@@ -1,4 +1,5 @@
 <?php
+session_start();
     define('DB_HOST'        , "localhost");
     define('DB_USER'        , "sa");
     define('DB_PASSWORD'    , "12345");
@@ -6,6 +7,9 @@
     define('DB_DRIVER'      , "sqlsrv");
     
     require_once "Conexao.php";
+    if($_SESSION['IsLogged']){
+        header("location: welcome.php");
+    }
     $fez = "";
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST["usu"], $_POST["senha"]) && !empty($_POST["usu"]) && !empty($_POST["senha"])) {
@@ -16,8 +20,10 @@
                     if (empty($pessoa)) {
                         $fez = "Usuário ou senha incorretos";
                     }
-                    else {
-                        header("location: grafico.php");
+                    else{
+                        $_SESSION['UserName'] = $_POST["usu"];
+                        header("location: welcome.php");
+                        $_SESSION["IsLogged"] = true;
                     }
             } catch(Exception $e) {
                 echo $e->getMessage();
@@ -27,6 +33,8 @@
             $fez = "Escreve aí né";
         }
     }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +44,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/materialize.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>Login</title>
+    <title>Document</title>
 </head>
 <body>
     <form method="post">

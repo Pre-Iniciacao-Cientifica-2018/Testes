@@ -18,7 +18,7 @@ class Conexao
            }
            return $connection;
        } catch (PDOException $e) {
-           $mensagem = "Drivers disponiveis: " . implode(",", PDO::getAvailableDrivers());
+           $mensagem = "Drivers disponíveis: " . implode(",", PDO::getAvailableDrivers());
            $mensagem .= "\nErro: " . $e->getMessage();
            throw new Exception($mensagem);
        }
