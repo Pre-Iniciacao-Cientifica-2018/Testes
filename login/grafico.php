@@ -1,3 +1,21 @@
+<?php
+    require_once "Conexao.php";
+    define('DB_HOST'        , "localhost");
+    define('DB_USER'        , "sa");
+    define('DB_PASSWORD'    , "12345");
+    define('DB_NAME'        , "TESTE");
+    define('DB_DRIVER'      , "sqlsrv");
+    try {
+        $Conexao    = Conexao::getConnection();
+        $query      = $Conexao->query("SELECT * FROM DADOS");
+        $pessoa   = $query->fetchAll();
+        
+    } catch(Exception $e) {
+        echo $e->getMessage();
+        exit;
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -28,7 +46,7 @@ var myChart = new Chart(ctx, {
         labels: ["13h", "14h", "15h", "16h", "17h", "18h"],
         datasets: [{
             label: '% de CO2',
-            data: [12, 19, 3, 5, 2, 3],
+            data: [<?php echo $pessoa[0][0]; ?>, <?php echo $pessoa[1][0]; ?>, <?php echo $pessoa[2][0]; ?>, <?php echo $pessoa[3][0]; ?>, <?php echo $pessoa[4][0]; ?>, <?php echo $pessoa[5][0]; ?>],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',

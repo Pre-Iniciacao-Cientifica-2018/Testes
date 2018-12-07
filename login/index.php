@@ -7,9 +7,9 @@ session_start();
     define('DB_DRIVER'      , "sqlsrv");
     
     require_once "Conexao.php";
-    if($_SESSION['IsLogged']){
-        header("location: welcome.php");
-    }
+    /*if($_SESSION['IsLogged']){
+        header("location: grafico.php");
+    }*/     
     $fez = "";
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST["usu"], $_POST["senha"]) && !empty($_POST["usu"]) && !empty($_POST["senha"])) {
@@ -22,7 +22,7 @@ session_start();
                     }
                     else{
                         $_SESSION['UserName'] = $_POST["usu"];
-                        header("location: welcome.php");
+                        header("location: grafico.php");
                         $_SESSION["IsLogged"] = true;
                     }
             } catch(Exception $e) {
