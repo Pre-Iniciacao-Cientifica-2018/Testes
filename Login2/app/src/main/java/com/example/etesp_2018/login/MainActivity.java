@@ -35,13 +35,11 @@ public class MainActivity extends AppCompatActivity {
 
                         OpenAreaRestrita();
 
-                    }else {
-                            login.setText("qqqqqq");
-                    }
+                   
 
 
                 }else {
-                    login.setText("qqqqqw");
+                    login.setText("Login ou senha errada");
                 }
             }
 
