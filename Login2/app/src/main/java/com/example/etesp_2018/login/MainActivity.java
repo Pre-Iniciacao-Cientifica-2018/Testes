@@ -38,9 +38,10 @@ public class MainActivity extends AppCompatActivity {
                    
 
 
+                }
                 }else {
                     login.setText("Login ou senha errada");
-                }
+                
             }
 
 
