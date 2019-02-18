@@ -5,13 +5,12 @@
     define('DB_PASSWORD'    , "12345");
     define('DB_NAME'        , "TESTE");
     define('DB_DRIVER'      , "sqlsrv");
-
     function getData() {
         try {
             $Conexao    = Conexao::getConnection();
-            $query      = $Conexao->query("SELECT TOP 1 * FROM DADOS");
-            $data   = $query->fetchAll();
-            echo $data[0][0];
+            $query      = $Conexao->query("SELECT TOP 1 concentracao,data_registro FROM DADOS order by id desc");
+            $data   = $query->fetchAll(); 
+            echo json_encode($data[0]);
         } catch(Exception $e) {
             echo $e->getMessage();
             exit;

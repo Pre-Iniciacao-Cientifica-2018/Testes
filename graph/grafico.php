@@ -1,4 +1,4 @@
-<?php include 'atualizar.php'; ?>
+<?php include 'atualizar.php';?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -78,13 +78,14 @@ setInterval(function(){
         data: {action: 'att'},
         type: 'post',
         success: function(output) {
-            var date = new Date();
-            var time = date.getHours()+":"+date.getMinutes();
-            addData(myChart, time, output);
+            var retorno = new Array();
+            retorno = JSON.parse(output);
+            var time = retorno[1]+"";
+            addData(myChart, time.substring(11,20), retorno[0]);          
         }
     });
 }
-, 1000);
+, 3000);
 
 
 </script>

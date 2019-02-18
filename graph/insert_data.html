@@ -1,0 +1,12 @@
+<html><head>    <script src="js/jquery.js"></script>
+    <script>
+        //ISSO É UMA PÁGINA APENAS PARA TESTES
+    setInterval(function(){ 
+        $.ajax({ url: 'test_receive.php',
+        success: function(output) {
+            console.log(output);
+        }
+        });
+    }
+    , 3000);
+    </script></head><body></body></html>
