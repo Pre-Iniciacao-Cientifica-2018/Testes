@@ -1,6 +1,6 @@
 <?php
     require_once "Conexao.php";
-    define('DB_HOST'        , "localhost");
+    define('DB_HOST'        , "TPN000276\SQLEXPRESS");
     define('DB_USER'        , "sa");
     define('DB_PASSWORD'    , "12345");
     define('DB_NAME'        , "TESTE");
@@ -16,12 +16,22 @@
             exit;
         }
     }
+    function getMediasDiarias(){
+        $data = $_POST["data_selecionada"];
+        $Conexao = Conexao::getConnection();
+        $query = $Conexao->query("SELECT concentracao from MEDIAS_HORARIAS WHERE convert(varchar(10),data_registro,103) = '".$data."'");
+        $dados_media = $Conexao->fetchAll();
+        echo json_encode($dados_media);
+    }
 
     if(isset($_POST['action']) && !empty($_POST['action'])) {
         $action = $_POST['action'];
         switch($action) {
             case 'att':
                 getData();break;
+                case 'md':
+                getMediasDiarias();break;
+
         }
     }
 ?>

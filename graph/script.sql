@@ -20,18 +20,12 @@ CREATE TABLE DADOS (
 )
 go
 
-create table MEDIAS_DIARIAS(
-	cod int primary key identity(1,1),
-	concentracao decimal,
-	data_dia date default getdate()
-)
 create table MEDIAS_HORARIAS(
-	cod int foreign key references MEDIAS_DIARIAS(cod),
-	hora int default datepart(hour,getdate()),
+	cod int primary key identity(1,1),
+	data_registro smalldatetime default getdate(),
 	concentracao decimal
 )
 GO
 INSERT INTO PESSOA VALUES ('user', 'teste')
 select * from dados
-select * from MEDIAS_HORARIAS
-select * from MEDIAS_DIARIAS
+delete from MEDIAS_HORARIAS

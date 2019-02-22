@@ -1,4 +1,12 @@
-<?php include 'atualizar.php';?>
+<?php include 'atualizar.php';
+session_start();
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST["datapicker"]) && !empty($_POST["datapicker"])) {
+        $_SESSION["datapicker"] = $_POST["datapicker"];
+        header("location: medias_Diarias_graph.php");
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -6,7 +14,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exemplo de gráfico</title>
     <script src="js/Chart.min.js"></script>
-    <script src="js/jquery.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>    <script>
+        debugger;
+      $( function() {
+    $( "#datepicker" ).datepicker({
+      showButtonPanel: true,
+      changeMonth: true,
+      changeYear: true
+    });
+    } );   
+    </script>
     <style>
         body {
             display: flex;
@@ -18,7 +38,7 @@
 </head>
 <body>
 <div class="chart-container">
-<canvas id="myChart" width="1000" height="500"></canvas>
+<canvas id="myChart" width="1000" height="500"></canvas>   
 <script>
 var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
@@ -90,5 +110,9 @@ setInterval(function(){
 
 </script>
 </div>
+<form method = "post">
+<input type="text" name = "datepicker" id="datepicker">
+    <input type="submit" text="Exibir gráfico" id="getMediasHorarias" onclick="getMediasHorarias()"> 
+</form>
 </body>
 </html>

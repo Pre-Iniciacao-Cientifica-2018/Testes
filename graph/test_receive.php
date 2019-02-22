@@ -3,7 +3,7 @@
 require_once "Conexao.php";
 require_once "calcMedia.php";
 session_start();
-define('DB_HOST'        , "localhost");
+define('DB_HOST'        , "TPN000276\SQLEXPRESS");
 define('DB_USER'        , "sa");
 define('DB_PASSWORD'    , "12345");
 define('DB_NAME'        , "TESTE");
@@ -21,7 +21,7 @@ if(empty($_SESSION["hour"])||!(isset($_SESSION["hour"]))){
 //ele vê se já passou uma hora, e se sim, atualiza a média
 if($_SESSION["hour"]<date("H")){
   $_SESSION["hour"]=date("H");
-  Media::CalcularMedia();
+  Medias::CalcularMedia();
 }
 echo $num;
 ?>
