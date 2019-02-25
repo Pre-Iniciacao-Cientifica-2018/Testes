@@ -1,9 +1,9 @@
 <?php include 'atualizar.php';
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST["datapicker"]) && !empty($_POST["datapicker"])) {
-        $_SESSION["datapicker"] = $_POST["datapicker"];
-        header("location: medias_Diarias_graph.php");
+    if (isset($_POST["datepicker"]) && !empty($_POST["datepicker"])) {
+        $_SESSION["datepicker"] = str_replace("-","/",$_POST["datepicker"]);
+        header("location: medias_diarias_graph.php");
     }
 }
 ?>
@@ -17,13 +17,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>    <script>
-        debugger;
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>   
+   <script>
       $( function() {
     $( "#datepicker" ).datepicker({
       showButtonPanel: true,
       changeMonth: true,
-      changeYear: true
+      changeYear: true,
+      dateFormat: "dd/mm/yy"
     });
     } );   
     </script>
@@ -39,6 +40,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 <div class="chart-container">
 <canvas id="myChart" width="1000" height="500"></canvas>   
+<p>Se quiserem ver o gráfico das médias diárias func, coloca dia 23 ai</p>
+<p>Se quiserem ver o gráfico em tempo real, abram a página <a href = "insert_data.html">insert_data.html</a></p>
 <script>
 var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
@@ -112,7 +115,7 @@ setInterval(function(){
 </div>
 <form method = "post">
 <input type="text" name = "datepicker" id="datepicker">
-    <input type="submit" text="Exibir gráfico" id="getMediasHorarias" onclick="getMediasHorarias()"> 
+    <input type="submit" text="Exibir gráfico" id="getMediasHorarias"> 
 </form>
 </body>
 </html>

@@ -5,20 +5,25 @@
     <meta charset="utf-8">
     <title>Medias Diarias</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="js/Chart.min.js"></script>
+    <script src="js/jquery.js"></script>
+
 </head>
 <script>
+    var tf = false;
         $.ajax({ url: 'atualizar.php',
-        data: {action: 'md',data_selecionada:<?php session_start();echo $_SESSION["datapicker"]?>},
+        data: {action: 'md'},
         type: 'post',
         success: function(output) {
-            Array values = JSON.parse(output);
+            tf = true;
+            var values = new Array();
+            values = JSON.parse(output);
             var ctx = document.getElementById("myChart");
     var myChart = new Chart(ctx, {
     type: 'line',
     data: {
         datasets: [{
             label: '% de CO2',
-            data: [2,4,1,6,10,9],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -48,11 +53,25 @@
         }
     }
 });
+if(tf){
+        var i;
+    for(i=0;true;i++){
+        if(values[i]=="end-con"){
+            break;
         }
+        myChart.data.datasets.forEach((dataset) => {
+        dataset.data.push(values[i]);
     });
-    for(int i=0;i<24;i++){
-        myChart.datasets[0].data[i] = values[i][0];
     }
+    for(var j=++i;j<Object.keys(values).length;j++){
+        myChart.data.labels.push(values[j]);
+    }
+    myChart.update();
+    }
+        }
+        
+    });
+    
 </script>
 <body>
 <canvas id="myChart" width="1000" height="500"></canvas>   

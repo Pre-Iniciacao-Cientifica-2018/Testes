@@ -28,4 +28,7 @@ create table MEDIAS_HORARIAS(
 GO
 INSERT INTO PESSOA VALUES ('user', 'teste')
 select * from dados
-delete from MEDIAS_HORARIAS
+
+select * from MEDIAS_HORARIAS
+
+insert into MEDIAS_HORARIAS(concentracao) values(24)
