@@ -1,6 +1,6 @@
 <?php
 session_start();
-    define('DB_HOST'        , "localhost");
+    define('DB_HOST'        , "DESKTOP-9F00L48\SQLEXPRESS");
     define('DB_USER'        , "sa");
     define('DB_PASSWORD'    , "12345");
     define('DB_NAME'        , "TESTE");

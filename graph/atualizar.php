@@ -1,6 +1,6 @@
 <?php
     require_once "Conexao.php";
-    define('DB_HOST'        , "localhost");
+    define('DB_HOST'        , "DESKTOP-9F00L48\SQLEXPRESS");
     define('DB_USER'        , "sa");
     define('DB_PASSWORD'    , "12345");
     define('DB_NAME'        , "TESTE");
@@ -8,7 +8,7 @@
     function getData() {
         try {
             $Conexao    = Conexao::getConnection();
-            $query      = $Conexao->query("SELECT TOP 1 concentracao,data_registro FROM DADOS order by id desc");
+            $query      = $Conexao->query("SELECT TOP 1 concentracao,data_registro,id FROM DADOS order by id desc");
             $data   = $query->fetchAll(); 
             echo json_encode($data[0]);
         } catch(Exception $e) {

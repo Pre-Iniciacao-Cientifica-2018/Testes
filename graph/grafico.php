@@ -14,6 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exemplo de gráfico</title>
     <script src="js/Chart.min.js"></script>
+    <link rel="stylesheet" href="css/datepicker.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -24,7 +25,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       showButtonPanel: true,
       changeMonth: true,
       changeYear: true,
-      dateFormat: "dd/mm/yy"
+      dateFormat: "dd/mm/yy",
+      dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'],
+        dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+        dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+        monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+        monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+        currentText: 'Hoje',
+        closeText : 'Fechar'
+
     });
     } );   
     </script>
@@ -95,7 +104,7 @@ function addData(chart, label, data) {
     });
     chart.update();
 }
-
+var lastCode;
 setInterval(function(){ 
     $.ajax({ url: 'atualizar.php',
         data: {action: 'att'},
@@ -104,7 +113,10 @@ setInterval(function(){
             var retorno = new Array();
             retorno = JSON.parse(output);
             var time = retorno[1]+"";
-            addData(myChart, time.substring(11,20), retorno[0]);          
+            if(lastCode!=retorno[2]){
+            addData(myChart, time.substring(11,20), retorno[0]);  
+            } 
+            lastCode = retorno[2];                         
         }
     });
 }
