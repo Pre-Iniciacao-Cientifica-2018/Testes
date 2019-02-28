@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">prjIC</string>
+    <string name="title_activity_second">SecondActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="textao"> "Curabitur a tincidunt odio. Donec sed quam arcu. Vestibulum consequat auctor
+        ipsum. Fusce eget sagittis magna. Cras nec scelerisque lectus. Pellentesque molestie, ipsum
+        sed ornare imperdiet, enim lacus semper odio, non imperdiet ipsum turpis eget justo. Quisque
+        sit amet quam lobortis, convallis justo sit amet, ornare turpis. Suspendisse tincidunt
+        eleifend nunc, sed mollis nulla consequat nec. Nulla hendrerit tristique ipsum vel pretium.
+        Morbi pellentesque accumsan justo, nec bibendum tellus tristique eu. Nunc molestie leo
+        laoreet enim lacinia malesuada.
+
+        Etiam pharetra  leo. In sollicitudin diam et interdum dictum. Nunc ac ex dui. Duis
+        sagittis consequat erat. Nunc porta, est venenatis consectetur fringilla, lorem dui ornare
+        ligula, at rhoncus erat nunc eget mauris. In accumsan leo nisi, vitae mattis magna luctus
+        dictum. Nam justo erat, euismod nec viverra eget, pretium vitae justo. Mauris varius egestas
+        justo. Vivamus rhoncus eu nunc vitae consectetur. Morbi interdum ultrices quam, non
+        elementum tellus luctus vestibulum. Aliquam erat volutpat. Nam semper nec turpis id
+        eleifend. Aenean mauris turpis, semper vitae elementum vitae, porta vel arcu. Duis rhoncus,
+        libero in tincidunt gravida, diam lacus imperdiet risus, nec pulvinar nulla orci ac orci.
+
+        Nam at leo laoreet, accumsan ligula et, commodo leo. Phasellus id arcu vel ex feugiat
+        bibendum non ut lacus. Orci varius natoque penatibus et magnis dis parturient montes,
+        nascetur ridiculus mus. Nulla magna arcu, accumsan a orci a, hendrerit molestie tellus. Duis
+        at arcu ultrices, porttitor elit in, porta elit. Etiam at est ac nulla malesuada venenatis
+        ut non felis. Cras vitae auctor nisl.
+
+        Sed bibendum eu erat ut pharetra. Vestibulum ante ipsum primis in faucibus orci luctus et
+        ultrices posuere cubilia Curae; Fusce interdum purus erat, vestibulum interdum libero
+        lobortis pretium. Duis consectetur iaculis ante sed imperdiet. Nulla egestas leo et quam
+        auctor egestas. Maecenas volutpat, leo ac elementum malesuada, nisl justo porttitor nisl, et
+        dapibus purus justo a justo. Vivamus at suscipit lorem. Curabitur dolor augue, pellentesque
+        vel ante quis, mollis posuere neque. Nullam interdum tincidunt purus, ac laoreet ex.
+
+        Phasellus dapibus nunc vitae sagittis auctor. Sed blandit, diam eget molestie tempus, dui
+        sem pretium turpis, non facilisis diam nisl sed dui. Vestibulum eget lorem non nulla
+        malesuada lobortis. Aliquam ac laoreet arcu, at consectetur leo. Vivamus tincidunt risus non
+        urna bibendum porttitor. Etiam dapibus vitae leo et eleifend. Morbi efficitur erat eget
+        congue sodales. Cras pulvinar lorem in justo lobortis, eget feugiat augue rhoncus. Proin
+        sodales, enim ornare tristique vehicula, velit turpis placerat risus, mollis mattis turpis
+        nisl quis lacus. Duis vestibulum ipsum et nulla posuere, vitae condimentum ipsum sagittis."</string>
+
+</resources>
