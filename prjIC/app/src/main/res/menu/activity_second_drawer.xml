@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/itemCap1"
+
+            android:title="I.  Pipipi" />
+        <item
+            android:id="@+id/itemCap2"
+
+            android:title="II. Popopo" />
+        <item
+            android:id="@+id/itemCap3"
+
+            android:title="III.Qqqqqq" />
+        <item
+            android:id="@+id/itemCap4"
+
+            android:title="IV. Aaaaaa"
+
+            />
+        <item
+            android:id="@+id/itemblank"
+
+            android:title=""
+
+            />
+        <item
+            android:id="@+id/itemblannk"
+
+            android:title=""
+
+
+            />
+
+    </group>
+
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/itemInicio"
+
+                android:title="Inicio" />
+            <item
+                android:id="@+id/itemMedReal"
+
+                android:title="Medição em Tempo Real" />
+            <item
+                android:id="@+id/itemSobre"
+
+                android:title="Sobre" />
+            <item
+                android:id="@+id/itemCtt"
+
+                android:title="Contato" />
+        </menu>
+    </item>
+
+</menu>
