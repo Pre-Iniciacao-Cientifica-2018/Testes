@@ -30,5 +30,5 @@ INSERT INTO PESSOA VALUES ('user', 'teste')
 select * from dados
 
 select * from MEDIAS_HORARIAS
+select * from MEDIAS_HORARIAS where convert(103,data_registro) between 21/02/2019 and 03/04/2019
 
-insert into MEDIAS_HORARIAS(concentracao) values(24)

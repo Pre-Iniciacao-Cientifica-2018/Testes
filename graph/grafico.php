@@ -5,6 +5,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["datepicker"] = str_replace("-","/",$_POST["datepicker"]);
         header("location: medias_diarias_graph.php");
     }
+    else if(isset($_POST["datepickerFrom"]) && !empty($_POST["datepickerFrom"])&&isset($_POST["datepickerTo"]) && !empty($_POST["datepickerTo"])){
+        $_SESSION["datepickerFrom"] = str_replace("-","/",$_POST["datepickerFrom"]);
+        $_SESSION["datepickerTo"] = str_replace("-","/",$_POST["datepickerTo"]);
+        header("location: medias_diarias_graph.php");
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -15,13 +20,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Exemplo de gráfico</title>
     <script src="js/Chart.min.js"></script>
     <link rel="stylesheet" href="css/datepicker.css">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">  
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>   
    <script>
+       window.onload = eraseSessionVariables;
+       function eraseSessionVariables(){
+        $.ajax({ url: 'atualizar.php',
+        data: {action: 'del'},
+        type: 'post'
+    });
+        }
       $( function() {
-    $( "#datepicker" ).datepicker({
+    $( ".datepicker" ).datepicker({
       showButtonPanel: true,
       changeMonth: true,
       changeYear: true,
@@ -49,8 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 <div class="chart-container">
 <canvas id="myChart" width="1000" height="500"></canvas>   
-<p>Se quiserem ver o gráfico das médias diárias func, coloca dia 23 ai</p>
-<p>Se quiserem ver o gráfico em tempo real, abram a página <a href = "insert_data.html">insert_data.html</a></p>
+<p>Se quiserem ver o gráfico em tempo real, abram a página <a href = "insert_data.html">insert_data.html</a> e ele vai atualizando</p>
 <script>
 var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
@@ -124,10 +134,19 @@ setInterval(function(){
 
 
 </script>
-</div>
 <form method = "post">
-<input type="text" name = "datepicker" id="datepicker">
+<h3>Escolha uma data para ver suas médias horárias</h3>
+<input type="text" name = "datepicker" class="datepicker">
     <input type="submit" text="Exibir gráfico" id="getMediasHorarias"> 
 </form>
+<form method = "post">
+    <h3>Escolha as datas para ser mostrado as médias diárias dentro desse período</h3>
+<input type="text" name = "datepickerFrom" class="datepicker" placeholder="De:">
+<input type="text" name = "datepickerTo" class="datepicker" placeholder="Até:">
+    <input type="submit" text="Exibir gráfico" id="getMediasDiarias"> 
+</form>
+</div>
+
+
 </body>
 </html>

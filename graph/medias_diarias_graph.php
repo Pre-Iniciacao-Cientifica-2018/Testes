@@ -7,7 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="js/Chart.min.js"></script>
     <script src="js/jquery.js"></script>
-
+<style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+    </style>
 </head>
 <script>
     var tf = false;
@@ -18,6 +25,7 @@
             tf = true;
             var values = new Array();
             values = JSON.parse(output);
+            if(Object.keys(values).length!=3){
             var ctx = document.getElementById("myChart");
     var myChart = new Chart(ctx, {
     type: 'line',
@@ -54,6 +62,7 @@
     }
 });
 if(tf){
+    var media = 0;
         var i;
     for(i=0;true;i++){
         if(values[i]=="end-con"){
@@ -62,18 +71,29 @@ if(tf){
         myChart.data.datasets.forEach((dataset) => {
         dataset.data.push(values[i]);
     });
+    media = media + parseFloat(values[i]);
     }
-    for(var j=++i;j<Object.keys(values).length;j++){
+    media = media/i;
+    ++i;
+    document.getElementById("media_diaria").innerHTML = "A média de concentração de CO2 dentro desse período foi de: "+media.toFixed(2);
+    for(var j=i;j<Object.keys(values).length;j++){
         myChart.data.labels.push(values[j]);
     }
     myChart.update();
     }
-        }
-        
+            }
+            else{
+                //fiz ele mostrar um texto quando tiver 1 valor somente
+                document.getElementById("media_diaria").innerHTML = "Foi encontrada apenas uma média dentro deste período, e ela é de: "+parseFloat(values[0]).toFixed(2)+" da data "+values[2];
+            }
+        }    
     });
     
 </script>
 <body>
-<canvas id="myChart" width="1000" height="500"></canvas>   
+    <div>
+<canvas id="myChart" width="1000" height="500"></canvas>
+<p id = "media_diaria"></p>  
+</div>
 </body>
 </html>
