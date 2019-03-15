@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
 <div class="chart-container">
-<canvas id="myChart" width="1000" height="500"></canvas>   
+<canvas id="myChart" width="1000" height="500"></canvas>  
 <p>Se quiserem ver o gráfico em tempo real, abram a página <a href = "insert_data.html">insert_data.html</a> e ele vai atualizando</p>
 <script>
 var ctx = document.getElementById("myChart");
