@@ -30,5 +30,6 @@ INSERT INTO PESSOA VALUES ('user', 'teste')
 select * from dados
 
 select * from MEDIAS_HORARIAS
-select * from MEDIAS_HORARIAS where convert(103,data_registro) between 21/02/2019 and 03/04/2019
-
+select 
+insert into MEDIAS_HORARIAS (concentracao,data_registro) values(13,'04-03-2019')
+SELECT avg(concentracao),convert(varchar(10),data_registro,103) from MEDIAS_HORARIAS where convert(smalldatetime,data_registro,103) between '12/02/2019' and '13/04/2019' group by data_registro order by data_registro /*esse é o select de um período específico*/

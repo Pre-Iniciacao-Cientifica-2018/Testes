@@ -3,13 +3,18 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["datepicker"]) && !empty($_POST["datepicker"])) {
         $_SESSION["datepicker"] = str_replace("-","/",$_POST["datepicker"]);
-        header("location: medias_diarias_graph.php");
     }
     else if(isset($_POST["datepickerFrom"]) && !empty($_POST["datepickerFrom"])&&isset($_POST["datepickerTo"]) && !empty($_POST["datepickerTo"])){
         $_SESSION["datepickerFrom"] = str_replace("-","/",$_POST["datepickerFrom"]);
         $_SESSION["datepickerTo"] = str_replace("-","/",$_POST["datepickerTo"]);
-        header("location: medias_diarias_graph.php");
     }
+    else if(isset($_POST["datepickerSemanal"]) && !empty($_POST["datepickerSemanal"])){
+        $_SESSION["datepickerSemanal"] = str_replace("-","/",$_POST["datepickerSemanal"]);
+    }
+    else if(isset($_POST["datepickerMensal"]) && !empty($_POST["datepickerMensal"])){
+        $_SESSION["datepickerMensal"] = str_replace("-","/",$_POST["datepickerMensal"]);
+    }
+    header("location: medias_diarias_graph.php");
 }
 ?>
 <!DOCTYPE html>
@@ -140,11 +145,20 @@ setInterval(function(){
     <input type="submit" text="Exibir gráfico" id="getMediasHorarias"> 
 </form>
 <form method = "post">
-    <h3>Escolha as datas para ser mostrado as médias diárias dentro desse período</h3>
+    <h3>Escolha duas datas para que seja mostrado as médias diárias dentro do período escolhido</h3>
 <input type="text" name = "datepickerFrom" class="datepicker" placeholder="De:">
 <input type="text" name = "datepickerTo" class="datepicker" placeholder="Até:">
     <input type="submit" text="Exibir gráfico" id="getMediasDiarias"> 
 </form>
+<form method = "post">
+<h3>Clique no botão abaixo para que seja mostrado as médias desta semana</h3>
+<input type="submit" text="Exibir gráfico" name = "datepickerSemanal" id="getMediaSemanal"> 
+</form>
+<form method = "post">
+<h3>Clique no botão abaixo para que seja mostrado as médias deste mês</h3>
+<input type="submit" text="Exibir gráfico" name = "datepickerMensal" id="getMediaMensal"> 
+</form>
+
 </div>
 
 

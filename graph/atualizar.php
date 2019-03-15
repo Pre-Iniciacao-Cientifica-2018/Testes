@@ -24,9 +24,17 @@
             $query = $Conexao->query("SELECT concentracao,datepart(hour,data_registro) from MEDIAS_HORARIAS WHERE convert(varchar(10),data_registro,103) = '".$_SESSION["datepicker"]."' ORDER by datepart(hour,data_registro)");
             convertToArray($return,$query);        
         }
-        else{
-            $query = $Conexao->query("SELECT avg(concentracao),convert(varchar(10),data_registro,103) from MEDIAS_HORARIAS where convert(smalldatetime,data_registro,103) between '".$_SESSION["datepickerFrom"]."' and '".$_SESSION["datepickerTo"]."' group by convert(varchar(10),data_registro,103)");
+        else if(isset($_SESSION["datepickerFrom"]) && !empty($_SESSION["datepickerFrom"])){
+            $query = $Conexao->query("SELECT avg(concentracao),convert(varchar(10),data_registro,103) from MEDIAS_HORARIAS where convert(smalldatetime,data_registro,103) between '".$_SESSION["datepickerFrom"]."' and '".$_SESSION["datepickerTo"]."' group by data_registro order by data_registro");
             convertToArray($return,$query);        
+        }
+        else if(isset($_SESSION["datepickerSemanal"]) && !empty($_SESSION["datepickerSemanal"])){
+            $query = $Conexao->query("SELECT avg(concentracao),convert(varchar(10),data_registro,103) from MEDIAS_HORARIAS where datepart(week,data_registro) = datepart(week,getdate()) group by data_registro order by data_registro");
+            convertToArray($return,$query);
+        }
+        else{
+            $query = $Conexao->query("SELECT avg(concentracao),convert(varchar(10),data_registro,103) from MEDIAS_HORARIAS where month(data_registro) = month(getdate()) group by data_registro order by data_registro");
+            convertToArray($return,$query);
         }
         echo json_encode($return);
 }
@@ -40,11 +48,11 @@
             try{
             $return[count($return)] = "end-con";
             for($i=0;$i<count($dados_media);$i++){
-                if(isset($_SESSION["datepickerFrom"])){
-                    $return[count($return)] = $dados_media[$i][1];
+                if(isset($_SESSION["datepicker"])){
+                    $return[count($return)] = $dados_media[$i][1].":00";
                 }
                 else{
-                    $return[count($return)] = $dados_media[$i][1].":00";
+                    $return[count($return)] = $dados_media[$i][1];
                 }
                 
             }
