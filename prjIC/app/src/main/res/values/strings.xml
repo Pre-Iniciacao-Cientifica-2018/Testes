@@ -44,5 +44,9 @@
         congue sodales. Cras pulvinar lorem in justo lobortis, eget feugiat augue rhoncus. Proin
         sodales, enim ornare tristique vehicula, velit turpis placerat risus, mollis mattis turpis
         nisl quis lacus. Duis vestibulum ipsum et nulla posuere, vitae condimentum ipsum sagittis."</string>
+    <string name="title_activity_menuebook">menuebook</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 
 </resources>
