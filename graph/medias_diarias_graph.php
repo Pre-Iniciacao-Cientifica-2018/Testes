@@ -84,7 +84,7 @@ if(tf){
             }
             else{
                 //fiz ele mostrar um texto quando tiver 1 valor somente
-                document.getElementById("media_diaria").innerHTML = "Foi encontrada apenas uma média dentro deste período, e ela é de: "+parseFloat(values[0]).toFixed(2)+" da data "+values[2];
+                document.getElementById("media_diaria").innerHTML = "Foi encontrada apenas uma média dentro deste período: "+parseFloat(values[0]).toFixed(2)+", no horário/na data "+values[2];
             }
         }    
     });

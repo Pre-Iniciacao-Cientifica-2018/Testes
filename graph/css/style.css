@@ -23,6 +23,6 @@ form {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: #333;
+    background: rgb(177, 177, 177);
     color: #fff;
 }

@@ -1,0 +1,33 @@
+@font-face {
+    font-family: Title;
+    src: url("../fonts/Prototype.ttf");  
+}
+@font-face {
+    font-family: 'Montserrat-Medium';
+    src: url("../fonts/Montserrat-Medium.ttf");  
+}
+@font-face {
+    font-family: 'Montserrat-Light';
+    src: url("../fonts/Montserrat-Light.ttf");  
+}
+
+
+
+
+#subTitle1{
+    font-size: 2vw
+}
+#subTitle2{
+    font-size: 1.3vw
+}
+.text{
+    font-family: 'Montserrat-Light';
+    font-size:1vw;
+    color:white
+}
+  .titleFontPattern{
+    font-family: 'Title';
+    color:white;
+    font-size: 4vw;
+    text-align: center
+  }

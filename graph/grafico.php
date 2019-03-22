@@ -1,6 +1,7 @@
 <?php include 'atualizar.php';
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $canChangePage  = true;
     if (isset($_POST["datepicker"]) && !empty($_POST["datepicker"])) {
         $_SESSION["datepicker"] = str_replace("-","/",$_POST["datepicker"]);
     }
@@ -14,7 +15,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     else if(isset($_POST["datepickerMensal"]) && !empty($_POST["datepickerMensal"])){
         $_SESSION["datepickerMensal"] = str_replace("-","/",$_POST["datepickerMensal"]);
     }
+    else{$canChangePage = false;}
+    if($canChangePage){
     header("location: medias_diarias_graph.php");
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -25,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Exemplo de gráfico</title>
     <script src="js/Chart.min.js"></script>
     <link rel="stylesheet" href="css/datepicker.css">
+    <link rel="stylesheet" href="css/graphPages.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">  
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>   
@@ -59,15 +64,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             align-items: center;
             justify-content: center;
             height: 100vh;
+            background:rgb(137,210,245)
         }
     </style>
 </head>
 <body>
-<div class="chart-container">
-<canvas id="myChart" width="1000" height="500"></canvas>  
+<div class="chart-container" style="position: relative; height:100vh; width:80vw">
+<h1 class = "titleFontPattern"> Área dos gráficos </h1>
+<h1 class = "titleFontPattern" id="subTitle1">Gráfico em tempo real da concentração de CO2 na atmosfera da raia olímpica</h1>
+<canvas id="myChart"></canvas>  
 <p>Se quiserem ver o gráfico em tempo real, abram a página <a href = "insert_data.html">insert_data.html</a> e ele vai atualizando</p>
 <script>
 var ctx = document.getElementById("myChart");
+Chart.defaults.global.defaultFontColor = 'white';
+Chart.defaults.global.defaultFontFamily = "Montserrat-Medium";
+Chart.defaults.global.defaultFontSize = 15;
 var myChart = new Chart(ctx, {
     type: 'line',
     data: {
@@ -76,34 +87,28 @@ var myChart = new Chart(ctx, {
             label: '% de CO2',
             data: [2,4,1,6,10,9],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+               'rgba(28,153,220,0.6)'
             ],
             borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+                '#ffffff'
             ],
-            borderWidth: 1
+            borderWidth: 1,
+
         }]
     },
     options: {
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero:true
-                }
+                    beginAtZero:true,
+                },
             }]
-        }
+
+        },
+        responsive: true
     }
 });
+ctx.font
 
 function addData(chart, label, data) {
 
@@ -139,8 +144,10 @@ setInterval(function(){
 
 
 </script>
-<form method = "post">
-<h3>Escolha uma data para ver suas médias horárias</h3>
+<h1 id = "subTitle1" class = "titleFontPattern">Ficou curioso para saber as concentrações de CO2 de outros dias?</h1>
+<p class="text">Para uma melhor visualização das concentrações de CO2 para você, deixamos um espaço destinado para que possas ver as médias diárias/semanais/mensais/horárias ou até dentro de um período específico escolhido ao seu gosto. Divirta-se! </p>
+<form method = "post" style="margin-top:5%">
+<h1 id = "subTitle2" class = "titleFontPattern">Escolha uma das datas para que seja mostrado suas médias horárias:</h1>
 <input type="text" name = "datepicker" class="datepicker">
     <input type="submit" text="Exibir gráfico" id="getMediasHorarias"> 
 </form>
