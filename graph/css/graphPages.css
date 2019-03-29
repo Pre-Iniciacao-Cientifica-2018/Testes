@@ -12,22 +12,65 @@
 }
 
 
+#mainTitle{
+    font-size: 4vw;
+    height: 4vw;
+    padding:3vw;
+    border-radius: 2vw;
+}
+#subTitle1{ 
+    font-size: 2vw;
+    height: 4vw;
+    padding:2vw;
+    border-radius: 10px;
 
-
-#subTitle1{
-    font-size: 2vw
 }
 #subTitle2{
-    font-size: 1.3vw
+    font-size: 1.3vw;
+    height: 1.5vw;
+    padding:2vw;
+    border-radius: 10px;
+}
+input{
+    border-radius: 5px;
+    border-color: black;
+    background-color: #0eb6f8;
+    font-family: 'Montserrat-Medium';
 }
 .text{
     font-family: 'Montserrat-Light';
     font-size:1vw;
-    color:white
+    color:white;
+    text-align:center
 }
   .titleFontPattern{
+    border-color: black;
     font-family: 'Title';
     color:white;
-    font-size: 4vw;
-    text-align: center
+    text-align: center;
+    background-color: rgba(28, 153, 220, 0.8);
   }
+ 
+  #content-divs{
+    background-color: rgba(28, 153, 220, 0.8);
+    width: 95%;
+    margin-top: 8%;
+    height: 100vh;
+    padding:2.3vw;
+    border-radius:10px;
+  }
+  #titleDiv{
+      background-color: rgba(28, 153, 220, 0.8);
+      padding: 2vw;
+  }
+   body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background:rgb(165, 218, 243);
+            background-image:URL("sanic.png");
+            background-attachment:fixed;
+            background-repeat:no-repeat;
+            background-position:center;
+        }

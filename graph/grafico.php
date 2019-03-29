@@ -58,22 +58,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     });
     } );   
     </script>
-    <style>
-        body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background:rgb(137,210,245)
-        }
-    </style>
+
 </head>
 <body>
-<div class="chart-container" style="position: relative; height:100vh; width:80vw">
-<h1 class = "titleFontPattern"> Área dos gráficos </h1>
-<h1 class = "titleFontPattern" id="subTitle1">Gráfico em tempo real da concentração de CO2 na atmosfera da raia olímpica</h1>
+<div class="chart-container" style="position: relative; height:100%; width:67vw;display:flex; flex-direction:column;">
+<h1 class = "titleFontPattern" id="mainTitle"> Área dos gráficos </h1>
+<h1 class = "titleFontPattern" id="subTitle1" >Gráfico em tempo real da concentração de CO2 na atmosfera da raia olímpica</h1>
 <canvas id="myChart"></canvas>  
-<p>Se quiserem ver o gráfico em tempo real, abram a página <a href = "insert_data.html">insert_data.html</a> e ele vai atualizando</p>
 <script>
 var ctx = document.getElementById("myChart");
 Chart.defaults.global.defaultFontColor = 'white';
@@ -87,7 +78,7 @@ var myChart = new Chart(ctx, {
             label: '% de CO2',
             data: [2,4,1,6,10,9],
             backgroundColor: [
-               'rgba(28,153,220,0.6)'
+               'rgba(28,153,220,0.7)'
             ],
             borderColor: [
                 '#ffffff'
@@ -144,30 +135,30 @@ setInterval(function(){
 
 
 </script>
-<h1 id = "subTitle1" class = "titleFontPattern">Ficou curioso para saber as concentrações de CO2 de outros dias?</h1>
+<div id = "content-divs">
+<h1 id = "subTitle1" class = "titleFontPattern"  class="subTitle">Ficou curioso para saber as concentrações de CO2 de outros dias?</h1>
 <p class="text">Para uma melhor visualização das concentrações de CO2 para você, deixamos um espaço destinado para que possas ver as médias diárias/semanais/mensais/horárias ou até dentro de um período específico escolhido ao seu gosto. Divirta-se! </p>
-<form method = "post" style="margin-top:5%">
-<h1 id = "subTitle2" class = "titleFontPattern">Escolha uma das datas para que seja mostrado suas médias horárias:</h1>
+<form method = "post" >
+<h1 id = "subTitle2" class = "titleFontPattern" class="subTitle">Escolha uma das datas para que seja mostrado suas médias horárias:</h1>
 <input type="text" name = "datepicker" class="datepicker">
     <input type="submit" text="Exibir gráfico" id="getMediasHorarias"> 
 </form>
 <form method = "post">
-    <h3>Escolha duas datas para que seja mostrado as médias diárias dentro do período escolhido</h3>
+<h1 id = "subTitle2" class = "titleFontPattern" class="subTitle">Escolha duas datas para que seja mostrado as médias diárias dentro do período escolhido</h1>
 <input type="text" name = "datepickerFrom" class="datepicker" placeholder="De:">
 <input type="text" name = "datepickerTo" class="datepicker" placeholder="Até:">
     <input type="submit" text="Exibir gráfico" id="getMediasDiarias"> 
 </form>
 <form method = "post">
-<h3>Clique no botão abaixo para que seja mostrado as médias desta semana</h3>
+<h1 id = "subTitle2" class = "titleFontPattern" class="subTitle">Clique no botão abaixo para que seja mostrado as médias desta semana</h1>
 <input type="submit" text="Exibir gráfico" name = "datepickerSemanal" id="getMediaSemanal"> 
 </form>
 <form method = "post">
-<h3>Clique no botão abaixo para que seja mostrado as médias deste mês</h3>
+<h1 id = "subTitle2" class = "titleFontPattern" class="subTitle">Clique no botão abaixo para que seja mostrado as médias deste mês</h1>
 <input type="submit" text="Exibir gráfico" name = "datepickerMensal" id="getMediaMensal"> 
 </form>
-
 </div>
-
+</div>
 
 </body>
 </html>
