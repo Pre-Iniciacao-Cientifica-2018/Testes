@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -22,18 +23,39 @@ import android.widget.Toast;
 
 public class SecondActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    Intent intent;
+    ImageButton btnArrasta, btnGraph, btnHome;
     private LinearLayout lay = null;
     private ImageView img = null;
     private ImageView img1 = null;
+    DrawerLayout drawer;
     //private float x,y;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-
-
-
-
+        btnHome = findViewById(R.id.btnHome);
+        btnArrasta = findViewById(R.id.btnArrasta);
+        btnGraph = findViewById(R.id.btnGraph);
+        drawer  = (DrawerLayout) findViewById(R.id.drawer_layout);
+        btnArrasta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Btn(1);
+            }
+        });
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Btn(0);
+            }
+        });
+        btnGraph.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Btn(2);
+            }
+        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -45,36 +67,55 @@ public class SecondActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
-
         lay = (LinearLayout) findViewById(R.id.linear);
         img = (ImageView) findViewById(R.id.imageView5);
         img1 = (ImageView) findViewById(R.id.imageView9);
         lay.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-            //    x = event.getX();
-            //    y = event.getY(); Um dia pode ser util
-                 if (event.getAction() == MotionEvent.ACTION_DOWN){
-                     if(img.getVisibility() == View.VISIBLE && img1.getVisibility() == View.VISIBLE){
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        //    x = event.getX();
+                        //    y = event.getY(); Um dia pode ser util
+                        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                            if (img.getVisibility() == View.VISIBLE && img1.getVisibility() == View.VISIBLE) {
 
-                         img.setVisibility(View.INVISIBLE);
-                         img1.setVisibility(View.INVISIBLE);
-                     }else{
-                         img.setVisibility(View.VISIBLE);
-                         img1.setVisibility(View.VISIBLE);
-                     }
+                                img.setVisibility(View.INVISIBLE);
+                                img1.setVisibility(View.INVISIBLE);
+                            } else {
+                                img.setVisibility(View.VISIBLE);
+                                img1.setVisibility(View.VISIBLE);
+                            }
 
-                 }
+                        }
 
-                 return true;
+                return true;
             }
 
         });
     }
 
+    public void Btn(int i) {
+
+        switch (i) {
+            case 0:
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                break;
+            case 1:
+                drawer.openDrawer(GravityCompat.START);
+            break;
+            case 2:
+                intent = new Intent(this, MedicaoParteUm.class);
+                startActivity(intent);
+                break;
+
+        }
+
+    }
+
+
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -120,7 +161,7 @@ public class SecondActivity extends AppCompatActivity
 
         } else if (id == R.id.itemInicio) {
 
-             intent = new Intent(this,MainActivity.class);
+            intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         } else if (id == R.id.itemMedReal) {
 

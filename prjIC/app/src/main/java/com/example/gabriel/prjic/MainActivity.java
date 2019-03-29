@@ -36,8 +36,10 @@ public class MainActivity extends AppCompatActivity {
         if(i == 1){
             intent = new Intent(getApplicationContext(),SecondActivity.class);
 
+
         }else{
             intent = new Intent(getApplicationContext(),SecondActivity.class);
+
 
         }
         startActivity(intent);
