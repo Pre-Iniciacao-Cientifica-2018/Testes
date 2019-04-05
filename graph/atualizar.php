@@ -64,6 +64,13 @@
         session_start();
         session_destroy();
     }
+    function getTop5Reg(){
+        $Conexao = Conexao::getConnection();
+        $query = $Conexao->query("SELECT top 5 concentracao,data_registro from dados");
+        $return;
+        convertToArray($return,$query);
+        echo json_encode($return);
+    }
     if(isset($_POST['action']) && !empty($_POST['action'])) {
         $action = $_POST['action'];
         switch($action) {
@@ -73,6 +80,8 @@
                 getMedias();break;
                 case 'del':
                 eraseSessionVariables();break;
+                case 'top5':
+                getTop5Reg();break;
 
         }
     }

@@ -20,22 +20,23 @@
 }
 #subTitle1{ 
     font-size: 2vw;
-    height: 4vw;
+    height: 3.5vw;
     padding:2vw;
     border-radius: 10px;
 
 }
 #subTitle2{
     font-size: 1.3vw;
-    height: 1.5vw;
+    height: 1.4vw;
     padding:2vw;
     border-radius: 10px;
 }
 input{
     border-radius: 5px;
-    border-color: black;
-    background-color: #0eb6f8;
+    border: 2px solid rgb(0, 0, 0);
+    background-color: #00000000;
     font-family: 'Montserrat-Medium';
+    color:white
 }
 .text{
     font-family: 'Montserrat-Light';
@@ -43,19 +44,36 @@ input{
     color:white;
     text-align:center
 }
+.datepicker{
+    height:1vw;
+    width:10vw;
+}
+::placeholder {
+    color: rgb(200, 200, 200);
+    opacity: 1; /* Firefox */
+    font-size: 0.7vw
+}
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: rgb(200, 200, 200);
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: rgb(200, 200, 200);
+  }
   .titleFontPattern{
-    border-color: black;
+    box-shadow:0 0 0 2px black;
     font-family: 'Title';
     color:white;
     text-align: center;
-    background-color: rgba(28, 153, 220, 0.8);
+    background-color: rgba(26, 146, 211, 0.8);
   }
  
   #content-divs{
     background-color: rgba(28, 153, 220, 0.8);
     width: 95%;
     margin-top: 8%;
-    height: 100vh;
+    height: 100%;
     padding:2.3vw;
     border-radius:10px;
   }
