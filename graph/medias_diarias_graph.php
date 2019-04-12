@@ -8,6 +8,8 @@
     <script type="text/javascript" src="js/Chart.min.js"></script>
     <script src = "js/patternGraph.js"></script>
     <script src="js/jquery.js"></script>
+    <script src = "js/resizeElements.js"></script>
+
 <style>
         body {
             display: flex;
@@ -57,7 +59,7 @@ if(tf){
     });
     
 </script>
-<body>
+<body onresize = "resizeElements()" onload="resizeElements()">
 <div class="chart-container" style="position: relative; height:100%; width:100%;display:flex; flex-direction:column;">
 <canvas id="myChart"></canvas>
 <p id = "media_diaria"></p>  

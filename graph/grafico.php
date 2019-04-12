@@ -34,28 +34,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">  
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>   
-   <script>
-       window.onload = eraseSessionVariables;
-        function resizeElements(){
-            if(mq.matches){
-    Chart.defaults.global.defaultFontSize = 15;
-}
-else if( (window.matchMedia( "(min-width: 800px)" )).matches){
-    Chart.defaults.global.defaultFontSize = 12;
-}
-else if((window.matchMedia( "(min-width: 600px)" )).matches){
-    Chart.defaults.global.defaultFontSize = 10;
-}
-            else if((window.matchMedia( "(min-width: 400px)" )).matches){
-                Chart.defaults.global.defaultFontSize = 7;
-            }
-        }
-       function eraseSessionVariables(){
+  <script src = "js/resizeElements.js"></script>
+   <script>  
+   window.onload = eraseSessionVariables;                   
+   function eraseSessionVariables(){
         $.ajax({ url: 'atualizar.php',
         data: {action: 'del'},
         type: 'post'
     });
-        }
+        } 
       $( function() {
     $( ".datepicker" ).datepicker({
       showButtonPanel: true,
@@ -72,11 +59,10 @@ else if((window.matchMedia( "(min-width: 600px)" )).matches){
 
     });
     } );   
-
     </script>
 
 </head>
-<body onresize = "resizeElements()">
+<body onresize = "resizeElements()" onload="resizeElements()">
 <div class="chart-container" style="position: relative; height:100%; width:67vw;display:flex; flex-direction:column;">
 <h1 class = "titleFontPattern" id="mainTitle"> Área dos gráficos </h1>
 <h1 class = "titleFontPattern" id="subTitle1" >Gráfico em tempo real da concentração de CO2 na atmosfera da raia olímpica</h1>
@@ -85,21 +71,7 @@ else if((window.matchMedia( "(min-width: 600px)" )).matches){
 var ctx = document.getElementById("myChart");
 Chart.defaults.global.defaultFontColor = 'white';
 Chart.defaults.global.defaultFontFamily = "Montserrat-Medium";
-const mq = window.matchMedia( "(min-width: 1200px)" );
-if(mq.matches){
-    Chart.defaults.global.defaultFontSize = 15;
-}
-else if( (window.matchMedia( "(min-width: 800px)" )).matches){
-    Chart.defaults.global.defaultFontSize = 12;
-}
-else if((window.matchMedia( "(min-width: 600px)" )).matches){
-    Chart.defaults.global.defaultFontSize = 10;
-}
-else if((window.matchMedia( "(min-width: 400px)" )).matches){
-    Chart.defaults.global.defaultFontSize = 7;
-}
 var myChart = createGraph(true);
-
 function addData(chart, label, data) {
 
     chart.data.labels.push(label);
