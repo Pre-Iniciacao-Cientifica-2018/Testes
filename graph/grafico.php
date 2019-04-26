@@ -2,6 +2,7 @@
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $canChangePage  = true;
+    $string = "location: medias_diarias_graph.php";
     if (isset($_POST["datepicker"]) && !empty($_POST["datepicker"])) {
         $_SESSION["datepicker"] = str_replace("-","/",$_POST["datepicker"]);
     }
@@ -15,9 +16,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     else if(isset($_POST["datepickerMensal"]) && !empty($_POST["datepickerMensal"])){
         $_SESSION["datepickerMensal"] = str_replace("-","/",$_POST["datepickerMensal"]);
     }
+    else if(isset($_POST["datepicker1"]) && !empty($_POST["datepicker1"])){
+        $_SESSION["datepicker1"] = str_replace("-","/",$_POST["datepicker1"]);
+        $string = "location: compare_graphs.php";
+    }   
     else{$canChangePage = false;}
     if($canChangePage){
-    header("location: medias_diarias_graph.php");
+    header($string);
     }
 }
 ?>
@@ -40,7 +45,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    function eraseSessionVariables(){
         $.ajax({ url: 'atualizar.php',
         data: {action: 'del'},
-        type: 'post'
+        type: 'post',
+        success: function() {
+        resizeElements();       
+        }
     });
         } 
       $( function() {
@@ -62,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </script>
 
 </head>
-<body onresize = "resizeElements()" onload="resizeElements()">
+<body onresize = "resizeElements()">
 <div class="chart-container" style="position: relative; height:100%; width:67vw;display:flex; flex-direction:column;">
 <h1 class = "titleFontPattern" id="mainTitle"> Área dos gráficos </h1>
 <h1 class = "titleFontPattern" id="subTitle1" >Gráfico em tempo real da concentração de CO2 na atmosfera da raia olímpica</h1>
@@ -127,6 +135,12 @@ setInterval(function(){
 <form method = "post">
 <h1 id = "subTitle2" class = "titleFontPattern" class="subTitle">Clique no botão abaixo para que seja mostrado as médias deste mês</h1>
 <input type="submit" text="Exibir gráfico" name = "datepickerMensal" id="getMediaMensal"> 
+</form>
+<form method = "post">
+<h1 id = "subTitle2" class = "titleFontPattern" class="subTitle">Escolha duas datas para que seja mostrado uma comparação entre suas médias horárias de concentração de CO2</h1>
+<input type="text" name = "detepicker1" class="datepicker" placeholder="Data 1">
+<input type="text" name = "detepicker2" class="datepicker" placeholder="Data 2">
+    <input type="submit" text="Exibir gráfico" id="getMediasHorarias2"> 
 </form>
 </div>
 </div>
